@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "timestamp": "2026-05-21T10:30:00Z",
+  "source": "Bloomberg",
+  "assets": [
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sentiment": "bullish",
+      "impact": "high",
+      "impactColor": "green",
+      "summary": "Strong Q1 earnings beat expectations driven by AI chip demand. Data center revenue grew 427% YoY.",
+      "confidenceScore": 0.92
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft Corporation",
+      "sentiment": "bullish",
+      "impact": "medium",
+      "impactColor": "green",
+      "summary": "Azure cloud revenue accelerated with AI services adoption driving enterprise growth.",
+      "confidenceScore": 0.85
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sentiment": "bullish",
+      "impact": "medium",
+      "impactColor": "green",
+      "summary": "AI integration across Search and Cloud platforms boosting advertiser confidence.",
+      "confidenceScore": 0.78
+    }
+  ],
+  "overallSentiment": "bullish",
+  "headline": "NVIDIA Reports Record Revenue as AI Demand Surges"
+}

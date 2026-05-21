@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "timestamp": "2026-05-21T14:15:00Z",
+  "source": "Reuters",
+  "assets": [
+    {
+      "ticker": "TSLA",
+      "name": "Tesla Inc.",
+      "sentiment": "bearish",
+      "impact": "high",
+      "impactColor": "red",
+      "summary": "Deliveries fell 13% QoQ amid rising competition in EV market and margin compression concerns.",
+      "confidenceScore": 0.88
+    },
+    {
+      "ticker": "RIVN",
+      "name": "Rivian Automotive",
+      "sentiment": "bearish",
+      "impact": "high",
+      "impactColor": "red",
+      "summary": "Cash burn rate accelerating with production targets missed for third consecutive quarter.",
+      "confidenceScore": 0.82
+    },
+    {
+      "ticker": "F",
+      "name": "Ford Motor Company",
+      "sentiment": "bearish",
+      "impact": "medium",
+      "impactColor": "yellow",
+      "summary": "EV division losses widening despite volume growth, ICE segment subsidizing transition.",
+      "confidenceScore": 0.71
+    }
+  ],
+  "overallSentiment": "bearish",
+  "headline": "EV Sector Faces Headwinds as Tesla Deliveries Disappoint"
+}

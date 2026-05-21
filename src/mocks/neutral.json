@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "timestamp": "2026-05-21T09:00:00Z",
+  "source": "Yahoo Finance",
+  "assets": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "impactColor": "yellow",
+      "summary": "iPhone sales in line with expectations. Services revenue steady but no major catalyst identified.",
+      "confidenceScore": 0.65
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon.com Inc.",
+      "sentiment": "neutral",
+      "impact": "low",
+      "impactColor": "gray",
+      "summary": "AWS growth stable at 17% YoY. Retail margins flat as consumer spending normalizes.",
+      "confidenceScore": 0.62
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms Inc.",
+      "sentiment": "neutral",
+      "impact": "none",
+      "impactColor": "gray",
+      "summary": "Ad revenue steady. Reality Labs losses continue but within guided range.",
+      "confidenceScore": 0.58
+    }
+  ],
+  "overallSentiment": "neutral",
+  "headline": "Tech Giants Report Mixed Results in Latest Earnings Season"
+}

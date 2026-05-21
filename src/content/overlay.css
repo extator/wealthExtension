@@ -1,0 +1,196 @@
+/* slate-900=#0f172a slate-800=#1e293b slate-700=#334155 slate-600=#475569 slate-500=#64748b slate-400=#94a3b8 slate-300=#cbd5e1 */
+
+#__sa_box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 380px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 2147483647;
+  background: #0f172a;
+  color: #f0f0f0;
+  border-radius: 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  border: 1px solid #334155;
+}
+
+#__sa_box .sa-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  border-bottom: 1px solid #334155;
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  font-size: 13px;
+  user-select: none;
+}
+
+#__sa_box .sa-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+#__sa_box .sa-close:hover { color: #fff; }
+
+#__sa_box .sa-body { padding: 12px; }
+
+#__sa_box .sa-loading {
+  color: #94a3b8;
+  font-style: italic;
+  text-align: center;
+  padding: 16px 0;
+}
+
+#__sa_box .sa-error {
+  color: #f87171;
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+/* Result meta row */
+#__sa_box .sa-result-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+#__sa_box .sa-portfolio-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #60a5fa;
+  background: #1e3a5f;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+#__sa_box .sa-overall {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+#__sa_box .sa-headline {
+  font-size: 11px;
+  color: #64748b;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card — mirrors SentimentCard.tsx */
+#__sa_box .sa-cards { display: flex; flex-direction: column; gap: 8px; }
+
+#__sa_box .sa-card {
+  border-left: 4px solid #334155;
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+#__sa_box .sa-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+#__sa_box .sa-card-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#__sa_box .sa-ticker {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#__sa_box .sa-name {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Price top-right */
+#__sa_box .sa-price-wrap {
+  text-align: right;
+}
+
+#__sa_box .sa-price {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+#__sa_box .sa-change {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+#__sa_box .sa-price-empty {
+  font-size: 10px;
+  color: #475569;
+}
+
+/* Skeleton pulse */
+#__sa_box .sa-price-skel {
+  height: 14px;
+  width: 64px;
+  background: #334155;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  animation: sa-pulse 1.5s ease-in-out infinite;
+}
+#__sa_box .sa-price-skel-sm {
+  height: 10px;
+  width: 48px;
+}
+
+@keyframes sa-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Badge + meta row */
+#__sa_box .sa-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#__sa_box .sa-badge {
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+#__sa_box .sa-meta-text {
+  font-size: 10px;
+  color: #64748b;
+}
+
+#__sa_box .sa-summary {
+  font-size: 12px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}

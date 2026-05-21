@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import type { Asset } from "../types";
-
-const impactEmoji: Record<string, string> = {
-  red: "\uD83D\uDD34",
-  yellow: "\uD83D\uDFE1",
-  green: "\uD83D\uDFE2",
-  gray: "\u26AA",
-};
 
 const sentimentLabel: Record<string, string> = {
   bullish: "Bullish",
@@ -29,12 +23,58 @@ const sentimentBadgeBg: Record<string, string> = {
   unknown: "bg-gray-500/10 text-gray-400",
 };
 
+interface PriceData {
+  price: number;
+  change: number;
+  changePercent: number;
+}
+
+async function fetchPrice(ticker: string): Promise<PriceData> {
+  const res = await fetch(
+    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1d`,
+    { headers: { "User-Agent": "Mozilla/5.0" } },
+  );
+  const data = await res.json() as {
+    chart?: {
+      result?: {
+        meta?: {
+          regularMarketPrice?: number;
+          previousClose?: number;
+          chartPreviousClose?: number;
+        };
+      }[];
+    };
+  };
+  const meta = data.chart?.result?.[0]?.meta;
+  if (!meta?.regularMarketPrice) throw new Error("No price");
+  const prev = meta.previousClose ?? meta.chartPreviousClose ?? meta.regularMarketPrice;
+  const change = meta.regularMarketPrice - prev;
+  return {
+    price: meta.regularMarketPrice,
+    change,
+    changePercent: (change / prev) * 100,
+  };
+}
+
 interface SentimentCardProps {
   asset: Asset;
   index: number;
 }
 
 export default function SentimentCard({ asset, index }: SentimentCardProps) {
+  const [priceData, setPriceData] = useState<PriceData | null>(null);
+  const [priceLoading, setPriceLoading] = useState(true);
+
+  useEffect(() => {
+    setPriceLoading(true);
+    fetchPrice(asset.ticker)
+      .then(setPriceData)
+      .catch(() => setPriceData(null))
+      .finally(() => setPriceLoading(false));
+  }, [asset.ticker]);
+
+  const isPositive = (priceData?.change ?? 0) >= 0;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -47,7 +87,26 @@ export default function SentimentCard({ asset, index }: SentimentCardProps) {
           <span className="text-sm font-bold text-white">{asset.ticker}</span>
           <span className="text-xs text-slate-400">{asset.name}</span>
         </div>
-        <span className="text-base">{impactEmoji[asset.impactColor]}</span>
+
+        <div className="text-right">
+          {priceLoading ? (
+            <div className="flex flex-col items-end gap-1">
+              <div className="h-4 w-16 animate-pulse rounded bg-slate-700" />
+              <div className="h-3 w-12 animate-pulse rounded bg-slate-700" />
+            </div>
+          ) : priceData ? (
+            <>
+              <p className="text-sm font-semibold text-white">
+                ${priceData.price.toFixed(2)}
+              </p>
+              <p className={`text-[10px] font-medium ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
+                {isPositive ? "+" : ""}{priceData.change.toFixed(2)} ({isPositive ? "+" : ""}{priceData.changePercent.toFixed(2)}%)
+              </p>
+            </>
+          ) : (
+            <p className="text-[10px] text-slate-600">—</p>
+          )}
+        </div>
       </div>
 
       <div className="mt-2 flex items-center gap-2">

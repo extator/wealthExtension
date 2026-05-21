@@ -13,19 +13,28 @@
     "default_title": "Sentiment Analyzer"
   },
   "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": [
+    "https://api.codesmart.app/*",
+    "https://query1.finance.yahoo.com/*"
+  ],
   "background": {
     "service_worker": "src/background/index.ts",
     "type": "module"
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://*.yahoo.com/*",
-        "https://*.bloomberg.com/*",
-        "https://*.reuters.com/*",
-        "https://*.cnbc.com/*"
-      ],
-      "js": ["src/content/index.ts"]
+      "matches": ["<all_urls>"],
+      "js": ["src/content/index.ts"],
+      "css": ["src/content/overlay.css"]
     }
-  ]
+  ],
+  "commands": {
+    "quick-analyze": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Quick analyze with first portfolio"
+    }
+  }
 }
